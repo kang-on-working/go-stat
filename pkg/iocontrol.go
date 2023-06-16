@@ -23,7 +23,7 @@ func ReadFile(file_path string) ([]byte, error) {
 	if err := CheckFileAccessibility(file_path); err != nil { return nil, err }
 
 	content, err := ioutil.ReadFile(file_path)
-	if err != nil { fmt.Println("File Reading Error : ", err) ; return nil, err	}
+	if err != nil { fmt.Println("File Reading Error : ", err) ; return nil, err }
 
 	return content, nil
 }
