@@ -1,6 +1,6 @@
 package pkg
 
-//"encoding/json"
+// import ( "encoding/json" )
 
 func StructToJson() {
 }
