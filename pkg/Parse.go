@@ -71,8 +71,7 @@ func ParseCPUInfo(cpuInfoStr string) ([]CPUInfo, error) {
 }
 
 func GetCPUArch(cpu_family string) string {
-	// 여기서 각 CPU 패밀리에 대한 아키텍처 매핑을 수행합니다.
-	// 예를 들어, family 값에 따라 "x86", "x86-64", "ARM" 등을 반환할 수 있습니다.
+	// mapping cpu family into ISA Architecture (CPU Architecture)
 	switch cpu_family {
 	case "1":
 		return "8086"
@@ -115,4 +114,41 @@ type MEMInfo struct {
 	MemInactive   string `json:"mem_inactive"`
 	MemSwapTotal  string `json:"mem_swap_total"`
 	MemSwapFree   string `json:"mem_swap_free"`
+}
+
+func ParseMEMInfo(memInfoStr string) (MEMInfo, error) {
+	memInfo := MEMInfo{}
+
+	lines := strings.Split(memInfoStr, "\n")
+	for _, line := range lines {
+
+		fields := strings.Split(line, ":")
+		key := strings.TrimSpace(fields[0])
+		value := strings.TrimSpace(fields[1])
+
+		switch key {
+		case "MemTotal":
+			memInfo.MemTotal = value
+		case "MemFree":
+			memInfo.MemFree = value
+		case "MemAvailable":
+			memInfo.MemAvailable = value
+		case "Buffers":
+			memInfo.MemBuffer = value
+		case "Cached":
+			memInfo.MemCached = value
+		case "SwapCached":
+			memInfo.MemSwapCached = value
+		case "Active":
+			memInfo.MemActive = value
+		case "Inactive":
+			memInfo.MemInactive = value
+		case "SwapTotal":
+			memInfo.MemSwapTotal = value
+		case "SwapFree":
+			memInfo.MemSwapTotal = value
+		}
+	}
+
+	return memInfo, nil
 }
