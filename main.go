@@ -8,8 +8,7 @@ import (
 func main() {
 	cpu, err := pkg.GetCPUInfo()
 	if err != nil { return }
-	fmt.Println(string(cpu))
-	mem, err := pkg.GetMEMInfo()
+	parsed, err := pkg.ParseCPUInfo(cpu)
 	if err != nil { return }
-	fmt.Println(string(mem))
+	fmt.Println(parsed)
 }
