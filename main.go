@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	cpu, err := pkg.GetCPUInfo()
+	mem, err := pkg.GetMEMInfo()
 	if err != nil { return }
-	parsed, err := pkg.ParseCPUInfo(cpu)
+	parsed, err := pkg.ParseMEMInfo(mem)
 	if err != nil { return }
 	fmt.Println(parsed)
 }

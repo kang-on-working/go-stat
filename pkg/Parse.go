@@ -1,6 +1,7 @@
 package pkg
 
 import (
+	// "fmt"
 	"strings"
 )
 
@@ -121,32 +122,33 @@ func ParseMEMInfo(memInfoStr string) (MEMInfo, error) {
 
 	lines := strings.Split(memInfoStr, "\n")
 	for _, line := range lines {
-
 		fields := strings.Split(line, ":")
-		key := strings.TrimSpace(fields[0])
-		value := strings.TrimSpace(fields[1])
+		if len(fields) > 1 {
+			key := strings.TrimSpace(fields[0])
+			value := strings.TrimSpace(fields[1])
 
-		switch key {
-		case "MemTotal":
-			memInfo.MemTotal = value
-		case "MemFree":
-			memInfo.MemFree = value
-		case "MemAvailable":
-			memInfo.MemAvailable = value
-		case "Buffers":
-			memInfo.MemBuffer = value
-		case "Cached":
-			memInfo.MemCached = value
-		case "SwapCached":
-			memInfo.MemSwapCached = value
-		case "Active":
-			memInfo.MemActive = value
-		case "Inactive":
-			memInfo.MemInactive = value
-		case "SwapTotal":
-			memInfo.MemSwapTotal = value
-		case "SwapFree":
-			memInfo.MemSwapTotal = value
+			switch key {
+			case "MemTotal":
+				memInfo.MemTotal = value
+			case "MemFree":
+				memInfo.MemFree = value
+			case "MemAvailable":
+				memInfo.MemAvailable = value
+			case "Buffers":
+				memInfo.MemBuffer = value
+			case "Cached":
+				memInfo.MemCached = value
+			case "SwapCached":
+				memInfo.MemSwapCached = value
+			case "Active":
+				memInfo.MemActive = value
+			case "Inactive":
+				memInfo.MemInactive = value
+			case "SwapTotal":
+				memInfo.MemSwapTotal = value
+			case "SwapFree":
+				memInfo.MemSwapTotal = value
+			}
 		}
 	}
 
