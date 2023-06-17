@@ -5,9 +5,6 @@ import (
 	"fmt"
 )
 
-func StructToJson() {
-}
-
 func CPUInfotoJson(cpuInfoList interface{}) (string, error) {
 	jsonData, err := json.Marshal(cpuInfoList)
 	if err != nil { fmt.Println("Error", err) ; return "", err }

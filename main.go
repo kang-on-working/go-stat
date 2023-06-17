@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	target := "./info.json"
+	output := "./info.json"
 
 	cpu, err := pkg.GetCPUInfo()
 	if err != nil { return }
@@ -26,5 +26,5 @@ func main() {
 
 	jsonData := cpujsonData + memjsonData
 
-	pkg.WriteFile(target, []byte(jsonData))
+	pkg.WriteFile(output, []byte(jsonData))
 }

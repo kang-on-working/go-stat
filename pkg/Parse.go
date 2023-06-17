@@ -66,7 +66,7 @@ func ParseCPUInfo(cpuInfoStr string) ([]CPUInfo, error) {
 		cpuInfoList = append(cpuInfoList, cpuInfo)
 	}
 
-	return cpuInfoList, nil
+	return cpuInfoList[:len(cpuInfoList)-1], nil
 }
 
 func GetCPUArch(cpu_family string) string {
