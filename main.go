@@ -24,7 +24,7 @@ func main() {
 	if err != nil { return }
 	fmt.Println(memjsonData)
 
-	jsonData := cpujsonData + memjsonData
+	jsonData := "{" + cpujsonData + memjsonData + "}"
 
 	pkg.WriteFile(output, []byte(jsonData))
 }
