@@ -116,6 +116,7 @@ type MEMInfo struct {
 }
 
 func ParseMEMInfo(memInfoStr string) (MEMInfo, error) {
+
 	memInfo := MEMInfo{}
 
 	lines := strings.Split(memInfoStr, "\n")
@@ -146,7 +147,7 @@ func ParseMEMInfo(memInfoStr string) (MEMInfo, error) {
 		case "SwapTotal":
 			memInfo.MemSwapTotal = value
 		case "SwapFree":
-			memInfo.MemSwapTotal = value
+			memInfo.MemSwapFree = value
 
 		}
 	}

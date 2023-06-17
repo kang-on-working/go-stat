@@ -10,5 +10,7 @@ func main() {
 	if err != nil { return }
 	parsed, err := pkg.ParseMEMInfo(mem)
 	if err != nil { return }
-	fmt.Println(parsed)
+	jsonData, err := pkg.MEMInfotoJson(parsed)
+	if err != nil { return }
+	fmt.Println(jsonData)
 }
