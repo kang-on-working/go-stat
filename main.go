@@ -6,11 +6,25 @@ import (
 )
 
 func main() {
+	target := "./info.json"
+
+	cpu, err := pkg.GetCPUInfo()
+	if err != nil { return }
+	cpuinfo, err := pkg.ParseCPUInfo(cpu)
+	if err != nil { return }
+	cpujsonData, err := pkg.CPUInfotoJson(cpuinfo)
+	if err != nil { return }
+	fmt.Println(cpujsonData)
+
 	mem, err := pkg.GetMEMInfo()
 	if err != nil { return }
-	parsed, err := pkg.ParseMEMInfo(mem)
+	meminfo, err := pkg.ParseMEMInfo(mem)
 	if err != nil { return }
-	jsonData, err := pkg.MEMInfotoJson(parsed)
+	memjsonData, err := pkg.MEMInfotoJson(meminfo)
 	if err != nil { return }
-	fmt.Println(jsonData)
+	fmt.Println(memjsonData)
+
+	jsonData := cpujsonData + memjsonData
+
+	pkg.WriteFile(target, []byte(jsonData))
 }

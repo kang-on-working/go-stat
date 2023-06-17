@@ -102,6 +102,8 @@ func GetCPUArch(cpu_family string) string {
 	}
 }
 
+
+
 type MEMInfo struct {
 	MemTotal      string `json:"mem_total"`
 	MemFree       string `json:"mem_free"`
